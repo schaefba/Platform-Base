@@ -59,6 +59,8 @@ vspd = 0;
 // understand this code. The link to the video is at the bottom
 // of this code.
 
+///THINGINGINGI
+
 var rkey = keyboard_check(vk_right);
 var lkey = keyboard_check(vk_left);
 var jkey = keyboard_check(vk_up);
