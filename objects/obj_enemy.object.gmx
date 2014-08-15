@@ -28,10 +28,13 @@
             <string>///Initialize Variables
 
 dir = -1;
-movespeed = 3;
 grav = 0.2;
-hsp = 0;
+hsp = 3;
 vsp = 0;
+start_x = x;
+start_y = y;
+patrol_x_length = 90;
+damage = 25;
 </string>
           </argument>
         </arguments>
@@ -81,9 +84,23 @@ x += hsp;*/
 }
 y += vsp;*/
 
+//patrolling code
+if((x &lt; start_x + patrol_x_length) &amp;&amp; (dir == 1)){
+    
+    x += hsp;
+}
+else if (x &gt; start_x) {
+    dir = -1;
+    x -= hsp;
+}
+else{
+    dir = 1;
+}
+
 //Enemy Collision
 if (place_meeting(x,y,obj_player))
 {
+    //player landed on top of enemy
     if (obj_player.y+(32 - obj_player.vspd) &lt; y)
     {
         with (obj_player) vspd = -jspd;
@@ -91,7 +108,19 @@ if (place_meeting(x,y,obj_player))
     }
     else
     {
-        game_restart();
+        if(obj_player.invincibility == false)
+        {
+            obj_player.health -= damage;
+            obj_player.invincibility = true;
+            obj_player.alarm[0] = obj_player.invcTime;
+        }
+        
+         with (obj_player) {
+            y -= 1; //set player off ground a little so obj_player.onGround = false
+            vspd = -jspd / 2; //divide by 2 for shorter height of knockback
+            hspd = -spd;
+            //vspd = -jspd / 2; //divide by 2 for shorter height of knockback
+         }
     }
 }
 </string>

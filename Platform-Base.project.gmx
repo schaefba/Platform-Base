@@ -6,23 +6,36 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_player</sprite>
-    <sprite>sprites\spr_solid</sprite>
-    <sprite>sprites\spr_enemy</sprite>
-    <sprite>sprites\sprite3</sprite>
+    <sprites name="Player">
+      <sprite>sprites\spr_player</sprite>
+    </sprites>
+    <sprites name="Enemies">
+      <sprite>sprites\spr_enemy</sprite>
+    </sprites>
+    <sprites name="System">
+      <sprite>sprites\spr_solid</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
-    <object>objects\obj_player</object>
-    <object>objects\obj_solid</object>
-    <object>objects\obj_enemy</object>
+    <objects name="Player">
+      <object>objects\obj_player</object>
+      <object>objects\zzobj_player</object>
+    </objects>
+    <objects name="System">
+      <object>objects\obj_healthbar</object>
+      <object>objects\obj_solid</object>
+    </objects>
+    <objects name="Enemies">
+      <object>objects\obj_enemy</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41864.2284646759</constant>
+    <constant name="GM_build_date">41866.1464343287</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

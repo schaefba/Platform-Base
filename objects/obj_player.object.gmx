@@ -26,12 +26,39 @@
           <argument>
             <kind>1</kind>
             <string>/// Initialize variables
-
-grav = 1;
-spd = 4;
-jspd = 12;
-hspd = 0;
-vspd = 0;
+health              = 100;
+grav                = 1;
+spd                 = 4;
+jspd                = 12;
+hspd                = 0;
+vspd                = 0;
+jumping             = false;
+jump_force          = -300;
+invincibility       = false;
+invcTime            = 60;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>invincibility = false;
 </string>
           </argument>
         </arguments>
@@ -59,22 +86,30 @@ vspd = 0;
 // understand this code. The link to the video is at the bottom
 // of this code.
 
-///THINGINGINGI
-
 var rkey = keyboard_check(vk_right);
 var lkey = keyboard_check(vk_left);
-var jkey = keyboard_check(vk_up);
-var resetKey = keyboard_check(vk_f1);
+var jkey = keyboard_check_pressed(vk_up);
+var resetKey = keyboard_check_pressed(vk_f1);
+var onGround = place_meeting(x, y+1, obj_solid);
 
 // Check for the ground
-if (place_meeting(x, y+1, obj_solid)) {
+if (onGround) {
     vspd = 0;
-    
-    if (jkey) {
+    //First jump
+    if (jkey) {   
+        jumping = true; 
         vspd = -jspd;
+        show_debug_message("First Jump");
     }
-} else {
-    // Gravity
+}
+//Second jump - check needs to go first
+else if(jumping == true &amp;&amp; !onGround &amp;&amp; jkey) {
+    vspd = -jspd;
+    show_debug_message("Second Jump");
+    jumping = false;
+}
+// Gravity
+else {
     if (vspd &lt; 10) {
         vspd += grav;
     }
@@ -118,7 +153,13 @@ if (place_meeting(x, y+vspd, obj_solid)) {
 y += vspd;
 
 //if reset key is pressed or check for out of bounds and reset game
-if(resetKey || x &gt; room_width || x &lt; 0 || y &gt; room_height || y &lt; 0) {
+if( resetKey 
+    || health &lt;= 0
+    || x &gt; room_width 
+    || x &lt; 0 
+    || y &gt; room_height 
+    || y &lt; 0) 
+{
    game_restart();
 }
 
