@@ -118,11 +118,13 @@ else {
 // Moving right
 if (rkey) {
     hspd = spd;
+    image_xscale = 1;
 }
 
 // Moving left
 if (lkey) {
     hspd = -spd;
+    image_xscale = -1;
 }
 
 // Check for not moving

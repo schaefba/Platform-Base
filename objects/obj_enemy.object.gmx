@@ -88,10 +88,12 @@ y += vsp;*/
 if((x &lt; start_x + patrol_x_length) &amp;&amp; (dir == 1)){
     
     x += hsp;
+    image_xscale = -1;
 }
 else if (x &gt; start_x) {
     dir = -1;
     x -= hsp;
+    image_xscale = 1;
 }
 else{
     dir = 1;
