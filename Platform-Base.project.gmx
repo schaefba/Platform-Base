@@ -7,7 +7,12 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprites name="Player">
-      <sprite>sprites\spr_player</sprite>
+      <sprite>sprites\spr_player_run_right</sprite>
+      <sprite>sprites\spr_player_run_left</sprite>
+      <sprite>sprites\spr_player_jump_right</sprite>
+      <sprite>sprites\spr_player_jump_left</sprite>
+      <sprite>sprites\spr_player_hurt</sprite>
+      <sprite>sprites\spr_player_idle</sprite>
     </sprites>
     <sprites name="Enemies">
       <sprite>sprites\spr_enemy</sprite>
@@ -32,10 +37,11 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_test</room>
+    <room>rooms\room1</room>
+    <room>rooms\room2</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41868.7909377431</constant>
+    <constant name="GM_build_date">41869.1564597222</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
