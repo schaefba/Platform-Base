@@ -91,6 +91,7 @@ var rkey = keyboard_check(vk_right);
 var lkey = keyboard_check(vk_left);
 var jkey = keyboard_check_pressed(vk_up);
 var resetKey = keyboard_check_pressed(vk_f1);
+var spaceKey = keyboard_check_pressed(vk_space);
 var onGround = place_meeting(x, y+1, obj_solid);
 
 // Check for the ground
@@ -149,12 +150,16 @@ else {
 // Moving right
 if (rkey) {
     hspd = spd;
-    
 }
 
 // Moving left
 if (lkey) {
     hspd = -spd;
+}
+
+//shoot bullet
+if (spaceKey) {
+    instance_create(x,y,obj_bullet);
 }
 
 // Check for not moving

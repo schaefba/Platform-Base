@@ -125,6 +125,14 @@ if (place_meeting(x,y,obj_player))
          }
     }
 }
+
+if(place_meeting(x, y, obj_bullet)) {
+    inst = instance_place(x, y, obj_bullet);
+    with(inst) {
+        instance_destroy(); //destroy enemy
+    }
+    instance_destroy(); //destroy bullet
+}
 </string>
           </argument>
         </arguments>
