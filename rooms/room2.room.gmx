@@ -7,7 +7,7 @@
   <hsnap>32</hsnap>
   <isometric>0</isometric>
   <speed>30</speed>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <colour>128</colour>
   <showcolour>-1</showcolour>
   <code></code>
@@ -84,7 +84,7 @@
     <instance objName="obj_solid" x="1952" y="736" name="inst_FF0FE2D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1920" y="736" name="inst_CE0CECE5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1824" y="736" name="inst_7A08B783" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="192" y="256" name="inst_87924C3E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="1120" y="384" name="inst_6E68EC80" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1856" y="736" name="inst_B7019A73" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1792" y="736" name="inst_5018CF4D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1888" y="736" name="inst_8601A659" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -146,7 +146,7 @@
     <instance objName="obj_solid" x="736" y="384" name="inst_3B30C06D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1056" y="384" name="inst_61CB4A59" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1088" y="384" name="inst_B61ED819" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid" x="1120" y="384" name="inst_6E68EC80" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warp" x="0" y="0" name="inst_13E973FF" locked="0" code="target_x = room1.room_width - obj_warp.sprite_width - obj_player.sprite_width;&#xA;target_y = 40;&#xA;target_r = room1;&#xA;" scaleX="1" scaleY="9.29032230377197" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

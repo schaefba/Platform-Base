@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -97,7 +97,7 @@ var onGround = place_meeting(x, y+1, obj_solid);
 if (onGround) {
     vspd = 0;
     
-    if( hspd == 0)
+    if(hspd == 0)
     {
         sprite_index = spr_player_idle;
         image_index = 0;
@@ -127,6 +127,8 @@ if (onGround) {
         image_speed = .25;
         show_debug_message("First Jump");
     }
+    
+    hspd = 0; //reset hspeed here
 }
 //Second jump - check needs to go first
 else if(jumping == true &amp;&amp; !onGround &amp;&amp; jkey) {
@@ -184,16 +186,25 @@ x += hspd;
 // Move vertically
 y += vspd;
 
-if (x &gt; room1.room_width) {
-    room_goto(room2);
+/*if(x &gt; room_width) {
+    room_goto_next();
+    //transition_kind = 6;
+    //transition_steps = 160;
 }
+else if (x &lt;= 0 &amp;&amp; room != room1) {
+    room_goto_previous();
+    x = room_width - 30;
+    //transition_kind = 7;
+    //transition_steps = 160;
+}
+else if (x &lt;= 0 &amp;&amp; room == room1) {
+    x = 0;
+}*/
 
 //if reset key is pressed or check for out of bounds and reset game
 if( resetKey 
-    || health &lt;= 0
-    || x &lt; 0 
-    || y &gt; room_height 
-    || y &lt; 0) 
+    || health &lt;= 0 
+    || y &gt; room_height) 
 {
    game_restart();
 }

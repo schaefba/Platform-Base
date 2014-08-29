@@ -19,6 +19,7 @@
     </sprites>
     <sprites name="System">
       <sprite>sprites\spr_solid</sprite>
+      <sprite>sprites\spr_warp</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -31,6 +32,7 @@
     <objects name="System">
       <object>objects\obj_healthbar</object>
       <object>objects\obj_solid</object>
+      <object>objects\obj_warp</object>
     </objects>
     <objects name="Enemies">
       <object>objects\obj_enemy</object>
@@ -41,7 +43,7 @@
     <room>rooms\room2</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41869.1564597222</constant>
+    <constant name="GM_build_date">41878.1561048032</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

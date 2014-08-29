@@ -122,7 +122,6 @@ if (place_meeting(x,y,obj_player))
             y -= 1; //set player off ground a little so obj_player.onGround = false
             vspd = -jspd / 2; //divide by 2 for shorter height of knockback
             hspd = -spd;
-            //vspd = -jspd / 2; //divide by 2 for shorter height of knockback
          }
     }
 }
