@@ -37,6 +37,7 @@ jumping             = false;
 jump_force          = -300;
 invincibility       = false;
 invcTime            = 30; //in frames
+hspd_carry          = 0; //platform move speed
 </string>
           </argument>
         </arguments>
@@ -170,11 +171,15 @@ if ((!rkey &amp;&amp; !lkey &amp;&amp; !invincibility) || (rkey &amp;&amp; lkey)
     }
 }
 
+var hspd_final = hspd + hspd_carry;
+hspd_carry = 0;
+
 // Horizontal collisions
-if (place_meeting(x+hspd, y, obj_solid)) {
-    while (!place_meeting(x+sign(hspd), y, obj_solid)) {
-        x+= sign(hspd);
+if (place_meeting(x + hspd_final, y, obj_solid)) {
+    while (!place_meeting(x+sign(hspd_final), y, obj_solid)) {
+        x+= sign(hspd_final);
     }
+    hspd_final = 0;
     hspd = 0;
 }
 
@@ -186,8 +191,23 @@ if (place_meeting(x, y+vspd, obj_solid)) {
     vspd = 0;
 }
 
+if(hspd_final &lt; -3) {
+    show_debug_message("negative");
+    show_debug_message("hspd_final");
+    show_debug_message(hspd_final);
+    show_debug_message("x");
+    show_debug_message(x);
+}
+if(hspd_final &gt; 3) {
+show_debug_message("positive");
+    show_debug_message("hspd_final");
+    show_debug_message(hspd_final);
+    show_debug_message("x");
+    show_debug_message(x);
+}
+
 // Move horizontally
-x += hspd;
+x += hspd_final;
 // Move vertically
 y += vspd;
 
