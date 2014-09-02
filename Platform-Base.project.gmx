@@ -25,6 +25,11 @@
     <sprites name="Projectiles">
       <sprite>sprites\spr_bullet</sprite>
     </sprites>
+    <sprites name="Melee">
+      <sprites name="Swords">
+        <sprite>sprites\spr_sword_1</sprite>
+      </sprites>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -45,13 +50,18 @@
     <objects name="Projectiles">
       <object>objects\obj_bullet</object>
     </objects>
+    <objects name="Melee">
+      <objects name="Swords">
+        <object>objects\obj_sword_1</object>
+      </objects>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
     <room>rooms\room2</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41880.1813584375</constant>
+    <constant name="GM_build_date">41884.1390284954</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

@@ -36,8 +36,38 @@ vspd                = 0;
 jumping             = false;
 jump_force          = -300;
 invincibility       = false;
+attacking           = false;
 invcTime            = 30; //in frames
+attackingTime       = 15; //in frames
 hspd_carry          = 0; //platform move speed
+dir                 = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Weapon Alarm
+attacking = false;
+with(obj_sword_1) {
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -60,7 +90,8 @@ hspd_carry          = 0; //platform move speed
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>invincibility = false;
+            <string>///Invincibility Alarm
+invincibility = false;
 </string>
           </argument>
         </arguments>
@@ -93,6 +124,7 @@ var lkey = keyboard_check(vk_left);
 var jkey = keyboard_check_pressed(vk_up);
 var resetKey = keyboard_check_pressed(vk_f1);
 var spaceKey = keyboard_check_pressed(vk_space);
+var fkey = keyboard_check_pressed(ord('F'));
 var onGround = place_meeting(x, y+1, obj_solid);
 
 // Check for the ground
@@ -111,12 +143,14 @@ if (onGround) {
             sprite_index = spr_player_run_right;
             image_index = 0;
             image_speed = 1;
+            dir = 1;
         }
         if(sprite_index != spr_player_run_left &amp;&amp; hspd &lt; 0)
         {
             sprite_index = spr_player_run_left;
             image_index = 0;
             image_speed = 1;
+            dir = -1;
         }
     }
     
@@ -163,6 +197,13 @@ if (spaceKey) {
     instance_create(x,y,obj_bullet);
 }
 
+if (fkey &amp;&amp; !attacking) {
+    attacking = true;
+    alarm[1] = attackingTime;
+    instance_create(x,y,obj_sword_1);
+    obj_sword_1.hspd = hspd;
+}
+
 // Check for not moving
 if ((!rkey &amp;&amp; !lkey &amp;&amp; !invincibility) || (rkey &amp;&amp; lkey)) {
     hspd = 0;
@@ -189,21 +230,6 @@ if (place_meeting(x, y+vspd, obj_solid)) {
         y+= sign(vspd);
     }
     vspd = 0;
-}
-
-if(hspd_final &lt; -3) {
-    show_debug_message("negative");
-    show_debug_message("hspd_final");
-    show_debug_message(hspd_final);
-    show_debug_message("x");
-    show_debug_message(x);
-}
-if(hspd_final &gt; 3) {
-show_debug_message("positive");
-    show_debug_message("hspd_final");
-    show_debug_message(hspd_final);
-    show_debug_message("x");
-    show_debug_message(x);
 }
 
 // Move horizontally

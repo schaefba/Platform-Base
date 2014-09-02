@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(obj_player.sprite_index == spr_player_run_left) {
+            <string>if(obj_player.dir == -1) {
     spd = -10;
 }
 else {
