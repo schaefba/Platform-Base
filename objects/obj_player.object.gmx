@@ -26,8 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>/// Initialize variables
-health              = 100;
+health              = 25;
 image_speed         = 2;
+isDead              = false;
 grav                = 1;
 spd                 = 4;
 jspd                = 12;
@@ -39,8 +40,33 @@ invincibility       = false;
 attacking           = false;
 invcTime            = 30; //in frames
 attackingTime       = 15; //in frames
+deathAnimTimer      = 90; //in frames
 hspd_carry          = 0; //platform move speed
 dir                 = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//game over screen
+game_restart();
 </string>
           </argument>
         </arguments>
@@ -127,6 +153,10 @@ var spaceKey = keyboard_check_pressed(vk_space);
 var fkey = keyboard_check_pressed(ord('F'));
 var onGround = place_meeting(x, y+1, obj_solid);
 
+if(isDead) {
+    return 0;
+}
+
 // Check for the ground
 if (onGround) {
     vspd = 0;
@@ -201,7 +231,6 @@ if (fkey &amp;&amp; !attacking) {
     attacking = true;
     alarm[1] = attackingTime;
     instance_create(x,y,obj_sword_1);
-    obj_sword_1.hspd = hspd;
 }
 
 // Check for not moving
@@ -252,11 +281,19 @@ else if (x &lt;= 0 &amp;&amp; room == room1) {
     x = 0;
 }*/
 
+if (health &lt;= 0 &amp;&amp; !isDead) {
+    isDead = true;
+    sprite_index = spr_player_death;
+    image_index = 0;
+    image_speed = .25;
+    if(image_index &gt;= 3) {
+        image_speed = 0;
+    }
+    alarm[2] = deathAnimTimer;
+}
+
 //if reset key is pressed or check for out of bounds and reset game
-if( resetKey 
-    || health &lt;= 0 
-    || y &gt; room_height) 
-{
+if( resetKey || y &gt; room_height) {
    game_restart();
 }
 

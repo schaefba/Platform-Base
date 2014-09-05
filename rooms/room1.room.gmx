@@ -84,7 +84,7 @@
     <instance objName="obj_solid" x="1696" y="864" name="inst_16A17BBE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy" x="1088" y="640" name="inst_A68B0203" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy" x="1600" y="832" name="inst_85462438" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="1888" y="224" name="inst_87924C3E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="1056" y="352" name="inst_87924C3E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy" x="1920" y="704" name="inst_B4C096E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1408" y="256" name="inst_91AB4ED4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy" x="1216" y="352" name="inst_6CA0EADE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

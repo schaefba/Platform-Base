@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>hspd = 0;
+vspd = 0;
 
 if(obj_player.dir == 1) {
     x = obj_player.x + 32;
@@ -61,7 +62,11 @@ else {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x += hspd;
+            <string>hspd = obj_player.hspd;
+vspd = obj_player.vspd;
+
+x += hspd;
+y += vspd;
 </string>
           </argument>
         </arguments>

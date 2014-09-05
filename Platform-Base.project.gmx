@@ -13,6 +13,7 @@
       <sprite>sprites\spr_player_jump_left</sprite>
       <sprite>sprites\spr_player_hurt</sprite>
       <sprite>sprites\spr_player_idle</sprite>
+      <sprite>sprites\spr_player_death</sprite>
     </sprites>
     <sprites name="Enemies">
       <sprite>sprites\spr_enemy</sprite>
@@ -61,7 +62,7 @@
     <room>rooms\room2</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41884.1390284954</constant>
+    <constant name="GM_build_date">41887.1540356481</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
