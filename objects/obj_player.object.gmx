@@ -40,9 +40,12 @@ invincibility       = false;
 attacking           = false;
 invcTime            = 30; //in frames
 attackingTime       = 15; //in frames
-deathAnimTimer      = 90; //in frames
+deathAnimTimer      = 60; //in frames
 hspd_carry          = 0; //platform move speed
 dir                 = 1;
+melee_damage        = 50;
+range_damage        = 25;
+jump_damage         = 25;
 </string>
           </argument>
         </arguments>
@@ -154,6 +157,15 @@ var fkey = keyboard_check_pressed(ord('F'));
 var onGround = place_meeting(x, y+1, obj_solid);
 
 if(isDead) {
+    if(image_index &gt;= 3) {
+        image_speed = 0;
+    }
+    if(!onGround) {
+        while (!place_meeting(x, y+sign(vspd), obj_solid)) {
+            y+= 1;
+        }
+    }
+    
     return 0;
 }
 
@@ -286,9 +298,6 @@ if (health &lt;= 0 &amp;&amp; !isDead) {
     sprite_index = spr_player_death;
     image_index = 0;
     image_speed = .25;
-    if(image_index &gt;= 3) {
-        image_speed = 0;
-    }
     alarm[2] = deathAnimTimer;
 }
 

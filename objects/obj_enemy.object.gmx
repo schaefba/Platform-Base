@@ -27,14 +27,40 @@
             <kind>1</kind>
             <string>///Initialize Variables
 
-dir = -1;
-grav = 0.2;
-hsp = 3;
-vsp = 0;
-start_x = x;
-start_y = y;
+dir             = -1;
+grav            = 0.2;
+hspd            = 3;
+vspd            = 0;
+start_x         = x;
+start_y         = y;
 patrol_x_length = 90;
-damage = 25;
+damage          = 25;
+enemy_health    = 50;
+deathAnimTimer  = 60;
+isDead          = false
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -57,41 +83,14 @@ damage = 25;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*hsp = dir * movespeed;
-vsp += grav;*/
-
-//Horizontal Collision
-/*if (place_meeting(x+hsp,y,obj_wall))
-{
-    while(!place_meeting(x+sign(hsp),y,obj_wall))
-    {
-        x += sign(hsp);
-    }
-    hsp = 0;
-    
-    dir *= -1;
-}
-x += hsp;*/
-
-//Vertical Collision
-/*if (place_meeting(x,y+vsp,obj_wall))
-{
-    while(!place_meeting(x,y+sign(vsp),obj_wall))
-    {
-        y += sign(vsp);
-    }
-    vsp = 0;
-}
-y += vsp;*/
-
-//patrolling code
+            <string>//patrolling code
 if((x &lt; start_x + patrol_x_length) &amp;&amp; (dir == 1)){
     
-    x += hsp;
+    x += hspd;
 }
 else if (x &gt; start_x) {
     dir = -1;
-    x -= hsp;
+    x -= hspd;
 }
 else{
     dir = 1;
@@ -103,26 +102,28 @@ if (place_meeting(x,y,obj_player))
     //player landed on top of enemy
     if (obj_player.y+(32 - obj_player.vspd) &lt; y)
     {
+        enemy_health -= obj_player.jump_damage;
         with (obj_player) vspd = -jspd;
-        instance_destroy();
     }
     else
     {
-        if(obj_player.invincibility == false)
-        {
-            obj_player.health -= damage;
-            obj_player.invincibility = true;
-            obj_player.alarm[0] = obj_player.invcTime;
-            obj_player.sprite_index = spr_player_hurt;
-            obj_player.image_index = 0;
-            obj_player.image_speed = 1;
+        if(!obj_player.isDead) {
+            if(obj_player.invincibility == false)
+            {
+                obj_player.health -= damage;
+                obj_player.invincibility = true;
+                obj_player.alarm[0] = obj_player.invcTime;
+                obj_player.sprite_index = spr_player_hurt;
+                obj_player.image_index = 0;
+                obj_player.image_speed = 1;
+            }
+            
+             with (obj_player) {
+                y -= 1; //set player off ground a little so obj_player.onGround = false
+                vspd = -jspd / 2; //divide by 2 for shorter height of knockback
+                hspd = -spd;
+             }
         }
-        
-         with (obj_player) {
-            y -= 1; //set player off ground a little so obj_player.onGround = false
-            vspd = -jspd / 2; //divide by 2 for shorter height of knockback
-            hspd = -spd;
-         }
     }
 }
 
@@ -131,12 +132,20 @@ if(place_meeting(x, y, obj_bullet)) {
     with(inst) {
         instance_destroy(); //destroy bullet
     }
-    instance_destroy(); //destroy enemy
+    enemy_health -= obj_player.range_damage;
 }
 
 if(place_meeting(x, y, obj_sword_1)) {
     inst = instance_place(x + 32, y, obj_sword_1);
-    instance_destroy();
+    enemy_health -= obj_player.melee_damage;
+}
+
+if(enemy_health &lt;= 0 &amp;&amp; !isDead) {
+   sprite_index = spr_enemy_death;
+   image_speed = .05;
+   hspd = 0;
+   alarm[0] = deathAnimTimer;
+   isDead = true;
 }
 </string>
           </argument>

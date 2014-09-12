@@ -17,6 +17,7 @@
     </sprites>
     <sprites name="Enemies">
       <sprite>sprites\spr_enemy</sprite>
+      <sprite>sprites\spr_enemy_death</sprite>
     </sprites>
     <sprites name="System">
       <sprite>sprites\spr_moving_platform</sprite>
@@ -62,7 +63,7 @@
     <room>rooms\room2</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41887.1540356481</constant>
+    <constant name="GM_build_date">41894.1376977431</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
