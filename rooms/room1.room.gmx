@@ -188,6 +188,7 @@
     <instance objName="obj_moving_platform_x" x="1664" y="352" name="inst_2DF7E8A1" locked="0" code="patrol_x_length = 90;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_moving_platform_x" x="1696" y="352" name="inst_33C5FD3D" locked="0" code="patrol_x_length = 90;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_moving_platform_x" x="1728" y="352" name="inst_03D068CE" locked="0" code="patrol_x_length = 90;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enemy_big" x="1280" y="256" name="inst_88F3E693" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

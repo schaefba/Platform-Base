@@ -17,6 +17,7 @@
     </sprites>
     <sprites name="Enemies">
       <sprite>sprites\spr_enemy</sprite>
+      <sprite>sprites\spr_enemy_big</sprite>
       <sprite>sprites\spr_enemy_death</sprite>
     </sprites>
     <sprites name="System">
@@ -26,6 +27,7 @@
     </sprites>
     <sprites name="Projectiles">
       <sprite>sprites\spr_bullet</sprite>
+      <sprite>sprites\spr_slime_glob</sprite>
     </sprites>
     <sprites name="Melee">
       <sprites name="Swords">
@@ -35,6 +37,9 @@
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\applyGravity.gml</script>
+  </scripts>
   <objects name="objects">
     <objects name="Player">
       <object>objects\obj_player</object>
@@ -48,6 +53,8 @@
     </objects>
     <objects name="Enemies">
       <object>objects\obj_enemy</object>
+      <object>objects\obj_enemy_big</object>
+      <object>objects\obj_slime_glob</object>
     </objects>
     <objects name="Projectiles">
       <object>objects\obj_bullet</object>
@@ -63,7 +70,7 @@
     <room>rooms\room2</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41894.1376977431</constant>
+    <constant name="GM_build_date">41897.0896471528</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
