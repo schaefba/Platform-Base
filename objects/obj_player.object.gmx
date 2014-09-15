@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>/// Initialize variables
-health              = 25;
+health              = 100;
 image_speed         = 2;
 isDead              = false;
 grav                = 1;
