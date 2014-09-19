@@ -56,10 +56,13 @@
       <object>objects\obj_solid</object>
       <object>objects\obj_warp</object>
       <object>objects\obj_moving_platform_x</object>
-      <object>objects\obj_door_open_bottom</object>
-      <object>objects\obj_door_open_top</object>
       <object>objects\obj_brick_wall</object>
       <object>objects\obj_roof</object>
+      <objects name="Doors">
+        <object>objects\obj_door_open_bottom</object>
+        <object>objects\obj_door_open_top</object>
+        <object>objects\obj_base_door</object>
+      </objects>
     </objects>
     <objects name="Enemies">
       <object>objects\obj_enemy</object>
@@ -78,9 +81,10 @@
   <rooms name="rooms">
     <room>rooms\room1</room>
     <room>rooms\room2</room>
+    <room>rooms\room_players_house</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41897.1316889815</constant>
+    <constant name="GM_build_date">41901.1473596065</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
