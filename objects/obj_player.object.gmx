@@ -46,6 +46,10 @@ dir                 = 1;
 melee_damage        = 50;
 range_damage        = 25;
 jump_damage         = 25;
+pausable            = 1; //0 = Can't be paused. 1 = Can be paused.
+weaponList[0]       = 0;
+weaponList[1]       = 0;
+curEquippedItem     = 0;
 </string>
           </argument>
         </arguments>
@@ -94,7 +98,7 @@ game_restart();
             <kind>1</kind>
             <string>///Weapon Alarm
 attacking = false;
-with(obj_sword_1) {
+with(obj_melee_wep) {
     instance_destroy();
 }
 </string>
@@ -143,10 +147,11 @@ invincibility = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Platform Physics
-// I would recommend watching the tutorial video to better
-// understand this code. The link to the video is at the bottom
-// of this code.
+            <string>if ( pause ) { //Put this before any other code.
+    sprite_index = spr_player_idle;
+    image_index = 0;
+    exit; 
+}
 
 var rkey = keyboard_check(vk_right);
 var lkey = keyboard_check(vk_left);
@@ -242,7 +247,8 @@ if (spaceKey) {
 if (fkey &amp;&amp; !attacking) {
     attacking = true;
     alarm[1] = attackingTime;
-    instance_create(x,y,obj_sword_1);
+    attackWithWeapon(curEquippedItem);
+    
 }
 
 // Check for not moving
@@ -275,23 +281,9 @@ if (place_meeting(x, y+vspd, obj_solid)) {
 
 // Move horizontally
 x += hspd_final;
+
 // Move vertically
 y += vspd;
-
-/*if(x &gt; room_width) {
-    room_goto_next();
-    //transition_kind = 6;
-    //transition_steps = 160;
-}
-else if (x &lt;= 0 &amp;&amp; room != room1) {
-    room_goto_previous();
-    x = room_width - 30;
-    //transition_kind = 7;
-    //transition_steps = 160;
-}
-else if (x &lt;= 0 &amp;&amp; room == room1) {
-    x = 0;
-}*/
 
 if (health &lt;= 0 &amp;&amp; !isDead) {
     isDead = true;

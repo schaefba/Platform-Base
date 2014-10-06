@@ -33,6 +33,7 @@ else {
 }
 x = obj_player.x;
 y = obj_player.y;
+pausable = 1; //0 = Can't be paused. 1 = Can be paused.
 </string>
           </argument>
         </arguments>
@@ -55,7 +56,9 @@ y = obj_player.y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x += spd;
+            <string>if ( pause ) exit; //Put this before any other code.
+
+x += spd;
 </string>
           </argument>
         </arguments>

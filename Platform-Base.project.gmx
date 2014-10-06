@@ -21,13 +21,15 @@
       <sprite>sprites\spr_enemy_death</sprite>
     </sprites>
     <sprites name="System">
-      <sprite>sprites\spr_moving_platform</sprite>
       <sprite>sprites\spr_warp</sprite>
-      <sprite>sprites\spr_solid</sprite>
-      <sprite>sprites\spr_door_open_bottom</sprite>
-      <sprite>sprites\spr_door_open_top</sprite>
-      <sprite>sprites\spr_brick_wall</sprite>
-      <sprite>sprites\spr_roof</sprite>
+      <sprites name="RoomTiles">
+        <sprite>sprites\spr_solid</sprite>
+        <sprite>sprites\spr_door_open_bottom</sprite>
+        <sprite>sprites\spr_door_open_top</sprite>
+        <sprite>sprites\spr_brick_wall</sprite>
+        <sprite>sprites\spr_roof</sprite>
+        <sprite>sprites\spr_moving_platform</sprite>
+      </sprites>
     </sprites>
     <sprites name="Projectiles">
       <sprite>sprites\spr_bullet</sprite>
@@ -36,6 +38,7 @@
     <sprites name="Melee">
       <sprites name="Swords">
         <sprite>sprites\spr_sword_1</sprite>
+        <sprite>sprites\spr_stick</sprite>
       </sprites>
     </sprites>
   </sprites>
@@ -45,37 +48,56 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\applyGravity.gml</script>
+    <script>scripts\story1.gml</script>
+    <script>scripts\displayText.gml</script>
+    <script>scripts\attackWithWeapon.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Player">
       <object>objects\obj_player</object>
-      <object>objects\zzobj_player</object>
+      <objects name="Projectiles">
+        <object>objects\obj_bullet</object>
+      </objects>
+      <objects name="Melee">
+        <objects name="Swords">
+          <object>objects\obj_sword_1</object>
+          <object>objects\obj_stick</object>
+          <object>objects\obj_standing_stick</object>
+        </objects>
+        <object>objects\obj_melee_wep</object>
+      </objects>
     </objects>
     <objects name="System">
       <object>objects\obj_healthbar</object>
-      <object>objects\obj_solid</object>
       <object>objects\obj_warp</object>
-      <object>objects\obj_moving_platform_x</object>
-      <object>objects\obj_brick_wall</object>
-      <object>objects\obj_roof</object>
       <objects name="Doors">
         <object>objects\obj_door_open_bottom</object>
         <object>objects\obj_door_open_top</object>
         <object>objects\obj_base_door</object>
       </objects>
+      <objects name="Dialog">
+        <object>objects\obj_dialog</object>
+      </objects>
+      <objects name="RoomTiles">
+        <object>objects\obj_moving_platform_x</object>
+        <object>objects\obj_brick_wall</object>
+        <object>objects\obj_roof</object>
+        <object>objects\obj_solid</object>
+      </objects>
     </objects>
     <objects name="Enemies">
       <object>objects\obj_enemy</object>
       <object>objects\obj_enemy_big</object>
-      <object>objects\obj_slime_glob</object>
-    </objects>
-    <objects name="Projectiles">
-      <object>objects\obj_bullet</object>
-    </objects>
-    <objects name="Melee">
-      <objects name="Swords">
-        <object>objects\obj_sword_1</object>
+      <objects name="Projectiles">
+        <object>objects\obj_slime_glob</object>
       </objects>
+      <objects name="Dialog">
+        <object>objects\obj_first_enemy_dialog</object>
+      </objects>
+      <object>objects\obj_base_enemy</object>
+    </objects>
+    <objects name="Controllers">
+      <object>objects\obj_pausable</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -84,7 +106,7 @@
     <room>rooms\room_players_house</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41901.1473596065</constant>
+    <constant name="GM_build_date">41918.1307148727</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

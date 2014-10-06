@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>direction = point_direction(x, y, obj_player.x, obj_player.y);
 speed = 4;
+vspd = 0;
+hspd = 0;
+pausable = 1; //0 = Can't be paused. 1 = Can be paused.
 </string>
           </argument>
         </arguments>
@@ -49,7 +52,15 @@ speed = 4;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (place_meeting(x, y, obj_player)) {
+            <string>if ( pause ) {
+    speed = 0;
+    exit; //Put this before any other code.
+}
+else {
+    speed = 4;
+}
+
+if (place_meeting(x, y, obj_player)) {
     with(obj_player) {
         health -= 25;
         alarm[0] = invcTime;

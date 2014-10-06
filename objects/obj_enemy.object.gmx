@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///Initialize Variables
-
+pausable        = 1; //0 = Can't be paused. 1 = Can be paused.
 dir             = -1;
 grav            = 0.2;
 hspd            = 3;
@@ -107,7 +107,9 @@ attacking       = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//patrolling code
+            <string>if ( pause ) exit; //Put this before any other code.
+
+//patrolling code
 if((x &lt; start_x + patrol_x_length) &amp;&amp; (dir == 1)){
     
     x += hspd;
@@ -160,7 +162,7 @@ if(place_meeting(x, y, obj_bullet)) {
 }
 
 if(place_meeting(x, y, obj_sword_1)) {
-    inst = instance_place(x + 32, y, obj_sword_1);
+    inst = instance_place(x + 32, y, obj_melee_wep);
     enemy_health -= obj_player.melee_damage;
 }
 
