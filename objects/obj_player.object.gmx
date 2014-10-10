@@ -49,7 +49,9 @@ jump_damage         = 25;
 pausable            = 1; //0 = Can't be paused. 1 = Can be paused.
 weaponList[0]       = 0;
 weaponList[1]       = 0;
+weaponList[2]       = 0;
 curEquippedItem     = 0;
+allowedIntoHouse    = false;
 </string>
           </argument>
         </arguments>
@@ -240,8 +242,8 @@ if (lkey) {
 }
 
 //shoot bullet
-if (spaceKey) {
-    instance_create(x,y,obj_bullet);
+if (spaceKey &amp;&amp; weaponList[2] == 1) {
+    attackWithWeapon(3);
 }
 
 if (fkey &amp;&amp; !attacking) {

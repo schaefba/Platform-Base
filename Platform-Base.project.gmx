@@ -29,6 +29,9 @@
         <sprite>sprites\spr_brick_wall</sprite>
         <sprite>sprites\spr_roof</sprite>
         <sprite>sprites\spr_moving_platform</sprite>
+        <sprite>sprites\spr_lava_top</sprite>
+        <sprite>sprites\spr_lava_mid</sprite>
+        <sprite>sprites\spr_fireball</sprite>
       </sprites>
     </sprites>
     <sprites name="Projectiles">
@@ -57,6 +60,7 @@
       <object>objects\obj_player</object>
       <objects name="Projectiles">
         <object>objects\obj_bullet</object>
+        <object>objects\obj_standing_bullet</object>
       </objects>
       <objects name="Melee">
         <objects name="Swords">
@@ -83,6 +87,11 @@
         <object>objects\obj_brick_wall</object>
         <object>objects\obj_roof</object>
         <object>objects\obj_solid</object>
+        <objects name="Lava">
+          <object>objects\obj_lava</object>
+          <object>objects\obj_lava_top</object>
+          <object>objects\obj_lava_mid</object>
+        </objects>
       </objects>
     </objects>
     <objects name="Enemies">
@@ -95,9 +104,11 @@
         <object>objects\obj_first_enemy_dialog</object>
       </objects>
       <object>objects\obj_base_enemy</object>
+      <object>objects\obj_fireball</object>
     </objects>
     <objects name="Controllers">
       <object>objects\obj_pausable</object>
+      <object>objects\obj_globals</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -106,7 +117,7 @@
     <room>rooms\room_players_house</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41918.1307148727</constant>
+    <constant name="GM_build_date">41922.1408960995</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

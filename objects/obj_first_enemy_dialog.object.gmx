@@ -64,6 +64,8 @@ attacking       = false;
             <string>pause = 0;
 view_visible[0] = true;
 view_visible[1] = false;
+obj_player.allowedIntoHouse = true;
+openingHasPlayed = true;
 </string>
           </argument>
         </arguments>
@@ -207,7 +209,7 @@ if(enemy_health &lt;= 0 &amp;&amp; !isDead) {
 }
 
 //enemy attack
-if(!attacking &amp;&amp; (distance_to_object(obj_player) &lt; 120)) {
+if(!attacking &amp;&amp; (distance_to_object(obj_player) &lt; 150) &amp;&amp; !openingHasPlayed) {
     instance_create(x,y,obj_slime_glob);
     attacking = true;
     alarm[1] = 75;
