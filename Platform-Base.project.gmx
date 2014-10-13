@@ -17,8 +17,10 @@
     </sprites>
     <sprites name="Enemies">
       <sprite>sprites\spr_enemy</sprite>
+      <sprite>sprites\spr_ghost</sprite>
       <sprite>sprites\spr_enemy_big</sprite>
       <sprite>sprites\spr_enemy_death</sprite>
+      <sprite>sprites\spr_fireball</sprite>
     </sprites>
     <sprites name="System">
       <sprite>sprites\spr_warp</sprite>
@@ -31,7 +33,6 @@
         <sprite>sprites\spr_moving_platform</sprite>
         <sprite>sprites\spr_lava_top</sprite>
         <sprite>sprites\spr_lava_mid</sprite>
-        <sprite>sprites\spr_fireball</sprite>
       </sprites>
     </sprites>
     <sprites name="Projectiles">
@@ -96,6 +97,7 @@
     </objects>
     <objects name="Enemies">
       <object>objects\obj_enemy</object>
+      <object>objects\obj_ghost</object>
       <object>objects\obj_enemy_big</object>
       <objects name="Projectiles">
         <object>objects\obj_slime_glob</object>
@@ -112,12 +114,12 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room1</room>
     <room>rooms\room2</room>
+    <room>rooms\room1</room>
     <room>rooms\room_players_house</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41922.1408960995</constant>
+    <constant name="GM_build_date">41925.1264353009</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

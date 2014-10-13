@@ -25,10 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dir = -1;
-yspd = 10;
-patrol_y_length = 200;
+            <string>yspd = 10;
+patrol_y_length = 350;
 start_y = y;
+grav = 0.5;
+dir = 1;
+pausable = 1; //0 = Can't be paused. 1 = Can be paused.
 </string>
           </argument>
         </arguments>
@@ -51,17 +53,35 @@ start_y = y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//moving platform code
-if((y &lt; start_y + patrol_y_length) &amp;&amp; (dir == 1)){ //moving down
-    y += yspd;
+            <string>if ( pause ) {
+    exit; //Put this before any other code.
 }
-else if (y &gt; start_y) { //moving up
+
+//moving platform code
+
+if(y &gt; start_y - patrol_y_length &amp;&amp; dir == 1) { //moving up
+    if(y &lt;= start_y - 250 &amp;&amp; yspd &gt;= 1) { //slow down for top half of ascension
+       yspd -= grav;
+    }
+    
+    y -= yspd; 
+}
+else if(y &lt;= start_y - patrol_y_length &amp;&amp; dir == 1) { //switch direction down
     dir = -1;
-    y -= yspd;
 }
-else{
+else if(y &gt;= start_y &amp;&amp; dir == -1) { //switch direction up
     dir = 1;
+}
+else { //move fireball down
+    if(y &lt; start_y - 250 &amp;&amp; yspd &lt;= 10) { //slow down for top half of ascension
+       yspd += grav;
+    }
+    
     y += yspd;
+}
+
+if(place_meeting(x, y, obj_player) || place_meeting(x + 32, y, obj_player)) {
+    game_restart();
 }
 </string>
           </argument>

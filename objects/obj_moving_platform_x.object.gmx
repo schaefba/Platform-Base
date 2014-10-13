@@ -30,6 +30,7 @@ hspd = 3;
 patrol_x_length = 90;
 start_x = x;
 start_y = y;
+pausable = 1; //0 = Can't be paused. 1 = Can be paused.
 </string>
           </argument>
         </arguments>
@@ -52,7 +53,11 @@ start_y = y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//moving platform code
+            <string>if(pause) {
+    exit;
+}
+
+//moving platform code
 if((x &lt; start_x + patrol_x_length) &amp;&amp; (dir == 1)){ //moving right
     x += hspd;
 }
